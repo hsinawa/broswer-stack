@@ -1,0 +1,31 @@
+<html>
+    <title>Browserstack Test</title>
+
+    <body>
+        <h1>This is Frontend for Logs</h1>
+        <pre id='log' ></pre>
+ 
+        <script>
+            const ws = new WebSocket('ws://localhost:8081');
+            const logElement = document.getElementById('log')
+
+            ws.onmessage = (event) => {
+  console.log('This is data', event.data);
+  logElement.textContent = event.data + '\n'
+};
+
+ws.onopen = () => {
+  console.log('Open connection');
+};
+
+ws.onclose = () => {
+  console.log('close connection');
+};
+
+function fetchLogs(){
+
+}
+        </script>
+
+    </body>
+</html>
